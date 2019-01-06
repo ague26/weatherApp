@@ -8,21 +8,22 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state={
-      list: [],
     }
   }
-  myCallback = (e) => {
+  dataWeather = (forecast,currentWeather) => {
       this.setState({ 
-        list: e 
+        list: forecast ,
+        currentTemp: currentWeather,
       });
   };
 
   render() {
-        console.log(this.state.list)
+        console.log(this.state.list);
+        console.log(this.state.currentTemp);
 
     return (
       <div className="App">
-        <Search callbackFromParent={this.myCallback} />
+        <Search callbackFromParent={this.dataWeather} />
         <WeatherDisplay />
 
       </div>

@@ -24,14 +24,20 @@ class Search extends Component{
 	}
 
 	getResults = async() => {
-		const key = "b01c9406898061c7293d799555d165bf";
-	  	const call = await axios(`http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=${key}&q=${this.state.city}&units=imperial`);
-	  	this.setState({
-	  		list: call.data.list,
-	  	}, ()=>{
-	  		 this.props.callbackFromParent(this.state.list);
-	  		}
-	  	);
+		try{
+			const key = "b01c9406898061c7293d799555d165bf";
+		  	const forecast = await axios(`http://api.openweathermap.org/data/2.5/forecast?APPID=${key}&q=${this.state.city}&units=imperial`);
+		  	const currentWeather = await axios(`http://api.openweathermap.org/data/2.5/weather?APPID=${key}&q=${this.state.city}&units=imperial`);
+		  	this.setState({
+		  		forecast: forecast.data.list,
+		  		currentWeatherTemp: currentWeather.data.main.temp,
+		  	}, ()=>{
+		  		 this.props.callbackFromParent(this.state.forecast, this.state.currentWeatherTemp);
+		  		}
+		  	);
+		  } catch(error){
+		  		alert(error);
+		  }
 	}
   
 	render(){
