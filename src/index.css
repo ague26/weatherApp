@@ -13,10 +13,16 @@ code {
     monospace;
 }
 
-.currentWeatherContainer{
-	margin-top:50px;
+.search{
+	height:10vh;
 	display: flex;
-	height: 50vh;
+	justify-content: center;
+	flex-direction: row;
+	align-items: center;
+}
+.currentWeatherContainer{
+	display: flex;
+	height: 90vh;
 	background-color: blue;
 	justify-content: center;
 	flex-direction: column;
@@ -36,6 +42,4 @@ code {
 	margin-left: 10px;
 }
 
-.search{
-	margin-top: 30px;
-}
+

@@ -37,7 +37,7 @@ class Search extends Component{
 	render(){
 		return(
 			<form onSubmit={this.setCity} className="search">
-	          <input  onChange={this.cityChange} placeholder="Enter here"/>
+	          <input  onChange={this.cityChange} placeholder="Enter City Here"/>
 	          <button onClick={this.getResults}> Submit </button>
 	        </form>
 		)
