@@ -13,11 +13,27 @@ code {
     monospace;
 }
 
-.boxContainer{
+.currentWeatherContainer{
 	margin-top:50px;
 	display: flex;
 	height: 50vh;
 	background-color: blue;
+	justify-content: center;
+	flex-direction: column;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: top;
+}
+.current{
+	display:inherit;
+	justify-content: inherit;
+	align-content: space-between;
+	flex-direction: row;
+
+}
+.current p{
+	align-self: center;
+	margin-left: 10px;
 }
 
 .search{

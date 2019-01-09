@@ -22,19 +22,13 @@ class Search extends Component{
 	      city: this.state.city,
 	    })
 	}
-
+	
 	getResults = async() => {
 		try{
 			const key = "b01c9406898061c7293d799555d165bf";
 		  	const forecast = await axios(`http://api.openweathermap.org/data/2.5/forecast?APPID=${key}&q=${this.state.city}&units=imperial`);
 		  	const currentWeather = await axios(`http://api.openweathermap.org/data/2.5/weather?APPID=${key}&q=${this.state.city}&units=imperial`);
-		  	this.setState({
-		  		forecast: forecast.data.list,
-		  		currentWeatherTemp: currentWeather.data.main.temp,
-		  	}, ()=>{
-		  		 this.props.callbackFromParent(this.state.forecast, this.state.currentWeatherTemp);
-		  		}
-		  	);
+		  	this.props.callbackFromParent({forecast}, {currentWeather});
 		  } catch(error){
 		  		alert(error);
 		  }
@@ -43,7 +37,7 @@ class Search extends Component{
 	render(){
 		return(
 			<form onSubmit={this.setCity} className="search">
-	          <input value = {this.state.city} onChange={this.cityChange}/>
+	          <input  onChange={this.cityChange} placeholder="Enter here"/>
 	          <button onClick={this.getResults}> Submit </button>
 	        </form>
 		)

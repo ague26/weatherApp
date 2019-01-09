@@ -8,23 +8,24 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state={
+      forecastData: null,
+      currentTempData: null,
     }
   }
-  dataWeather = (forecast,currentWeather) => {
+
+  weatherData = (forecast,currentWeather) => {
       this.setState({ 
-        list: forecast ,
-        currentTemp: currentWeather,
+        forecastData: forecast ,
+        currentTempData: currentWeather,
       });
   };
 
   render() {
-        console.log(this.state.list);
-        console.log(this.state.currentTemp);
-
+    console.log(this.state.currentTempData)
     return (
       <div className="App">
-        <Search callbackFromParent={this.dataWeather} />
-        <WeatherDisplay />
+        <Search callbackFromParent={this.weatherData} />
+        <WeatherDisplay currentTemps={this.state.currentTempData} />
 
       </div>
     );
